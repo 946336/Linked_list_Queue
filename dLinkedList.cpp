@@ -1,7 +1,6 @@
 #include <iostream>
 #include "dLinkedList.h"
 
-/*
 template<typename T>
 struct ListNode{
 	ListNode(){
@@ -83,24 +82,23 @@ template<typename T>
 node<T> prev(node<T> lst){
 	return lst->prev;
 }
-*/
 
 // force instantiation for std:: types
-// template struct ListNode<char>;
-// template struct ListNode<char16_t>;
-// template struct ListNode<char32_t>;
-// template struct ListNode<wchar_t>;
-// template struct ListNode<signed char>;
-// template struct ListNode<signed short int>;
-// template struct ListNode<signed int>;
-// template struct ListNode<signed long int>;
-// template struct ListNode<signed long long int>;
-// template struct ListNode<unsigned char>;
-// template struct ListNode<unsigned short int>;
-// template struct ListNode<unsigned int>;
-// template struct ListNode<unsigned long int>;
-// template struct ListNode<unsigned long long int>;
-// template struct ListNode<float>;
-// template struct ListNode<double>;
-// template struct ListNode<long double>;
-// template struct ListNode<bool>;
+template struct ListNode<char>;
+template struct ListNode<char16_t>;
+template struct ListNode<char32_t>;
+template struct ListNode<wchar_t>;
+template struct ListNode<signed char>;
+template struct ListNode<signed short int>;
+template struct ListNode<signed int>;
+template struct ListNode<signed long int>;
+template struct ListNode<signed long long int>;
+template struct ListNode<unsigned char>;
+template struct ListNode<unsigned short int>;
+template struct ListNode<unsigned int>;
+template struct ListNode<unsigned long int>;
+template struct ListNode<unsigned long long int>;
+template struct ListNode<float>;
+template struct ListNode<double>;
+template struct ListNode<long double>;
+template struct ListNode<bool>;
