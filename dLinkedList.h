@@ -2,35 +2,35 @@
 #define DLINKEDLIST_H
 #include <iostream>
 
-template <typename T> struct ListNode;
-template <typename T>
-using node = ListNode<T>*;
+template <class T> struct ListNode;
+// template <class T>
+// using node = ListNode<T>*;
 
-template<typename T>
-bool isEmpty(node<T> lst);
+template<class T>
+bool isEmpty(ListNode<T>* lst);
 
-template<typename T>
-node<T> prepend(T data, node<T> lst);
+template<class T>
+ListNode<T>* prepend(T data, ListNode<T>* lst);
 
-template<typename T>
-void postpend (T data, node<T> lst);
+template<class T>
+void postpend (T data, ListNode<T>* lst);
 
-template<typename T>
-node<T> deleteFirst(node<T> lst);
+template<class T>
+ListNode<T>* deleteFirst(ListNode<T>* lst);
 
-template<typename T>
-void deleteLast(node<T> lst);
+template<class T>
+void deleteLast(ListNode<T>* lst);
 
-template<typename T>
-T first(node<T> lst);
+template<class T>
+T first(ListNode<T>* lst);
 
-template<typename T>
-node<T> next(node<T> lst);
+template<class T>
+ListNode<T>* next(ListNode<T>* lst);
 
-template<typename T>
-node<T> prev(node<T> lst);
+template<class T>
+ListNode<T>* prev(ListNode<T>* lst);
 
-template<typename T>
+template<class T>
 struct ListNode{
 	ListNode(){
 		prev = empty;
@@ -41,49 +41,52 @@ struct ListNode{
 	~ListNode(){};
 
 	// I'm horrified that I had to resort to this
-	static constexpr node<T> empty = NULL;
+	static ListNode<T>* empty;
 
 	T data;
-	node<T> next, prev;
+	ListNode<T> *next, *prev;
 };
 
-template<typename T>
-bool isEmpty(node<T> lst){
+template <typename T>
+ListNode<T>* ListNode<T>::empty = NULL;
+
+template<class T>
+bool isEmpty(ListNode<T>* lst){
 	return lst == ListNode<T>::empty;
 }
 
-template<typename T>
-node<T> prepend(T data, node<T> lst){
-	node<T> newNode(data);
+template<class T>
+ListNode<T>* prepend(T data, ListNode<T>* lst){
+	ListNode<T>* newNode(data);
 	newNode->next = lst;
 	if(lst != ListNode<T>::empty) lst->prev = newNode;
 	return newNode;
 }
 
 // list must not be empty. Use prepend for empty lists!
-template<typename T>
-void postpend (T newData, node<T> lst){
-	node<T> newNode = new ListNode<T>;
+template<class T>
+void postpend (T newData, ListNode<T>* lst){
+	ListNode<T>* newNode = new ListNode<T>;
 	newNode->data = newData;
-	node<T> tempNode = lst;
+	ListNode<T>* tempNode = lst;
 	while(tempNode != ListNode<T>::empty)
 		tempNode = next(tempNode);
 	tempNode->next = newNode;
 	newNode->prev = tempNode;
 } 
 
-template<typename T>
-node<T> deleteFirst(node<T> lst){
-	node<T> tempNode = lst;
+template<class T>
+ListNode<T>* deleteFirst(ListNode<T>* lst){
+	ListNode<T>* tempNode = lst;
 	lst = next(lst);
 	delete tempNode;
 	lst->prev = ListNode<T>::empty;
 	return lst;
 }
 
-template<typename T>
-void deleteLast(node<T> lst){
-	node<T> temp = lst;
+template<class T>
+void deleteLast(ListNode<T>* lst){
+	ListNode<T>* temp = lst;
 	if(lst->next == ListNode<T>::empty){
 		delete lst;
 		return ListNode<T>::empty;
@@ -96,18 +99,18 @@ void deleteLast(node<T> lst){
 	return lst;
 }
 
-template<typename T>
-T first(node<T> lst){
+template<class T>
+T first(ListNode<T>* lst){
 	return lst->data;
 }
 
-template<typename T>
-node<T> next(node<T> lst){
+template<class T>
+ListNode<T>* next(ListNode<T>* lst){
 	return lst->next;
 }
 
-template<typename T>
-node<T> prev(node<T> lst){
+template<class T>
+ListNode<T>* prev(ListNode<T>* lst){
 	return lst->prev;
 }
 
