@@ -1,9 +1,9 @@
 #ifndef DLINKEDLIST_H
 #define DLINKEDLIST_H
 
-template <typename T> struct listNode;
+template <typename T> struct ListNode;
 template <typename T>
-using node = listNode<T>*;
+using node = ListNode<T>*;
 
 template<typename T>
 bool isEmpty(node<T> lst);
