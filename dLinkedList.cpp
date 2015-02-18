@@ -1,7 +1,10 @@
+#ifndef DLINKEDLIST_CPP
+#define DLINKEDLIST_CPP
+
 #include <iostream>
+using namespace std;
 #include "dLinkedList.h"
 
-/*
 template<typename T>
 struct ListNode{
 	ListNode(){
@@ -15,7 +18,6 @@ struct ListNode{
 	// I'm horrified that I had to resort to this
 	static constexpr node<T> empty = NULL;
 
-private:
 	T data;
 	node<T> next, prev;
 };
@@ -83,7 +85,8 @@ template<typename T>
 node<T> prev(node<T> lst){
 	return lst->prev;
 }
-*/
+
+#endif
 
 // force instantiation for std:: types
 // template struct ListNode<char>;

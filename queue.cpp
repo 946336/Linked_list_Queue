@@ -1,8 +1,13 @@
+#ifndef QUEUE_CPP
+#define QUEUE_CPP
+
 #include <iostream>
+using namespace std;
 #include "queue.h"
 #include "dLinkedList.h"
 
-/*
+#ifndef DLINKEDLIST_H
+#define DLINKEDLIST_H
 template<typename T>
 struct ListNode{
 	ListNode(){
@@ -18,14 +23,15 @@ struct ListNode{
 	T data;
 	node<T> next, prev;
 };
+#endif
 
-template <typename T>
-Queue<T>::~Queue(){
-	break_circular();
-	while(head->next != ListNode<T>::empty){
-		head = deleteFirst(head);
-	}
-}
+// template <typename T>
+// Queue<T>::~Queue(){
+// 	break_circular();
+// 	while(head->next != ListNode<T>::empty){
+// 		head = deleteFirst(head);
+// 	}
+// }
 
 // private; only used by destructor
 template<typename T>
@@ -67,12 +73,16 @@ void Queue<T>::enqueue(T newData){
 
 template<typename T>
 T Queue<T>::dequeue(){
+	cout << "Oi" << endl;
 	node<T> toDelete = head;
+	cout << "MM" << endl;
 	T data = first(toDelete);
+	cout << "WW" << endl;
 	toDelete->prev->next = next(toDelete);
 	toDelete->next->prev = prev(toDelete);
 	if(queueSize >= 1) head = next(toDelete);
 	else head = ListNode<T>::empty;
+	cout << "Yo" << endl;
 	delete toDelete;
 	queueSize--;
 	return data;
@@ -82,7 +92,9 @@ template<typename T>
 int Queue<T>::size(){
 	return queueSize;
 }
-*/
+
+
+#endif
 
 // force instantiation for std:: types
 // template class Queue<char>;

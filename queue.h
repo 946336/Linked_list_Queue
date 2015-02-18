@@ -49,7 +49,7 @@ struct ListNode{
 	node<T> next, prev;
 };
 #endif
-
+/*
 // private; only used by destructor
 template<typename T>
 void Queue<T>::break_circular(){
@@ -104,7 +104,8 @@ T Queue<T>::dequeue(){
 template<typename T>
 int Queue<T>::size(){
 	return queueSize;
-}
+}*/
 
+#include "queue.cpp"
 
 #endif

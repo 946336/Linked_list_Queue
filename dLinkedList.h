@@ -30,85 +30,87 @@ node<T> next(node<T> lst);
 template<typename T>
 node<T> prev(node<T> lst);
 
-template<typename T>
-struct ListNode{
-	ListNode(){
-		prev = empty;
-		next = empty;
-		data = T();
-	}
-	// Don't think I need to do anything here
-	~ListNode(){};
+#include "dLinkedList.cpp"
 
-	// I'm horrified that I had to resort to this
-	static constexpr node<T> empty = NULL;
+// template<typename T>
+// struct ListNode{
+// 	ListNode(){
+// 		prev = empty;
+// 		next = empty;
+// 		data = T();
+// 	}
+// 	// Don't think I need to do anything here
+// 	~ListNode(){};
 
-	T data;
-	node<T> next, prev;
-};
+// 	// I'm horrified that I had to resort to this
+// 	static constexpr node<T> empty = NULL;
 
-template<typename T>
-bool isEmpty(node<T> lst){
-	return lst == ListNode<T>::empty;
-}
+// 	T data;
+// 	node<T> next, prev;
+// };
 
-template<typename T>
-node<T> prepend(T data, node<T> lst){
-	node<T> newNode(data);
-	newNode->next = lst;
-	if(lst != ListNode<T>::empty) lst->prev = newNode;
-	return newNode;
-}
+// template<typename T>
+// bool isEmpty(node<T> lst){
+// 	return lst == ListNode<T>::empty;
+// }
 
-// list must not be empty. Use prepend for empty lists!
-template<typename T>
-void postpend (T newData, node<T> lst){
-	node<T> newNode = new ListNode<T>;
-	newNode->data = newData;
-	node<T> tempNode = lst;
-	while(tempNode != ListNode<T>::empty)
-		tempNode = next(tempNode);
-	tempNode->next = newNode;
-	newNode->prev = tempNode;
-} 
+// template<typename T>
+// node<T> prepend(T data, node<T> lst){
+// 	node<T> newNode(data);
+// 	newNode->next = lst;
+// 	if(lst != ListNode<T>::empty) lst->prev = newNode;
+// 	return newNode;
+// }
 
-template<typename T>
-node<T> deleteFirst(node<T> lst){
-	node<T> tempNode = lst;
-	lst = next(lst);
-	delete tempNode;
-	lst->prev = ListNode<T>::empty;
-	return lst;
-}
+// // list must not be empty. Use prepend for empty lists!
+// template<typename T>
+// void postpend (T newData, node<T> lst){
+// 	node<T> newNode = new ListNode<T>;
+// 	newNode->data = newData;
+// 	node<T> tempNode = lst;
+// 	while(tempNode != ListNode<T>::empty)
+// 		tempNode = next(tempNode);
+// 	tempNode->next = newNode;
+// 	newNode->prev = tempNode;
+// } 
 
-template<typename T>
-void deleteLast(node<T> lst){
-	node<T> temp = lst;
-	if(lst->next == ListNode<T>::empty){
-		delete lst;
-		return ListNode<T>::empty;
-	}
-	while(temp->next != ListNode<T>::empty){
-		temp = next(temp);
-	}
-	temp->prev->next = ListNode<T>::empty;
-	delete temp;
-	return lst;
-}
+// template<typename T>
+// node<T> deleteFirst(node<T> lst){
+// 	node<T> tempNode = lst;
+// 	lst = next(lst);
+// 	delete tempNode;
+// 	lst->prev = ListNode<T>::empty;
+// 	return lst;
+// }
 
-template<typename T>
-T first(node<T> lst){
-	return lst->data;
-}
+// template<typename T>
+// void deleteLast(node<T> lst){
+// 	node<T> temp = lst;
+// 	if(lst->next == ListNode<T>::empty){
+// 		delete lst;
+// 		return ListNode<T>::empty;
+// 	}
+// 	while(temp->next != ListNode<T>::empty){
+// 		temp = next(temp);
+// 	}
+// 	temp->prev->next = ListNode<T>::empty;
+// 	delete temp;
+// 	return lst;
+// }
 
-template<typename T>
-node<T> next(node<T> lst){
-	return lst->next;
-}
+// template<typename T>
+// T first(node<T> lst){
+// 	return lst->data;
+// }
 
-template<typename T>
-node<T> prev(node<T> lst){
-	return lst->prev;
-}
+// template<typename T>
+// node<T> next(node<T> lst){
+// 	return lst->next;
+// }
+
+// template<typename T>
+// node<T> prev(node<T> lst){
+// 	return lst->prev;
+// }
 
 # endif
