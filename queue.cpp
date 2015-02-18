@@ -25,13 +25,19 @@ struct ListNode{
 };
 #endif
 
-// template <typename T>
-// Queue<T>::~Queue(){
-// 	break_circular();
-// 	while(head->next != ListNode<T>::empty){
-// 		head = deleteFirst(head);
-// 	}
-// }
+template<typename T>
+Queue<T>::Queue(){
+	queueSize = 0;
+	head = ListNode<T>::empty;
+}
+
+template <typename T>
+Queue<T>::~Queue(){
+	break_circular();
+	while(head->next != ListNode<T>::empty){
+		head = deleteFirst(head);
+	}
+}
 
 // private; only used by destructor
 template<typename T>
@@ -91,23 +97,3 @@ int Queue<T>::size(){
 
 
 #endif
-
-// force instantiation for std:: types
-// template class Queue<char>;
-// template class Queue<char16_t>;
-// template class Queue<char32_t>;
-// template class Queue<wchar_t>;
-// template class Queue<signed char>;
-// template class Queue<signed short int>;
-// template class Queue<signed int>;
-// template class Queue<signed long int>;
-// template class Queue<signed long long int>;
-// template class Queue<unsigned char>;
-// template class Queue<unsigned short int>;
-// template class Queue<unsigned int>;
-// template class Queue<unsigned long int>;
-// template class Queue<unsigned long long int>;
-// template class Queue<float>;
-// template class Queue<double>;
-// template class Queue<long double>;
-// template class Queue<bool>;

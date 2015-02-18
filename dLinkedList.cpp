@@ -7,11 +7,7 @@ using namespace std;
 
 template<typename T>
 struct ListNode{
-	ListNode(){
-		prev = empty;
-		next = empty;
-		data = T();
-	}
+	ListNode();
 	// Don't think I need to do anything here
 	~ListNode(){};
 
@@ -21,6 +17,13 @@ struct ListNode{
 	T data;
 	node<T> next, prev;
 };
+
+template<typename T>
+ListNode<T>::ListNode(){
+	prev = empty;
+	next = empty;
+	data = T();
+}
 
 template<typename T>
 bool isEmpty(node<T> lst){
@@ -87,23 +90,3 @@ node<T> prev(node<T> lst){
 }
 
 #endif
-
-// force instantiation for std:: types
-// template struct ListNode<char>;
-// template struct ListNode<char16_t>;
-// template struct ListNode<char32_t>;
-// template struct ListNode<wchar_t>;
-// template struct ListNode<signed char>;
-// template struct ListNode<signed short int>;
-// template struct ListNode<signed int>;
-// template struct ListNode<signed long int>;
-// template struct ListNode<signed long long int>;
-// template struct ListNode<unsigned char>;
-// template struct ListNode<unsigned short int>;
-// template struct ListNode<unsigned int>;
-// template struct ListNode<unsigned long int>;
-// template struct ListNode<unsigned long long int>;
-// template struct ListNode<float>;
-// template struct ListNode<double>;
-// template struct ListNode<long double>;
-// template struct ListNode<bool>;
