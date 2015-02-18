@@ -15,10 +15,7 @@ int main(){
 		was.enqueue(double(i)/3);
 	}
 
-	cout << "Hello" << endl;
-
 	for(int i = 0; i < 20; i++){
-		cout << "Errr...." << endl;
 		cout << i << " " << was.dequeue() << endl;
 	}
 

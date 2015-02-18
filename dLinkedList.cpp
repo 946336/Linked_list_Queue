@@ -73,7 +73,7 @@ void deleteLast(node<T> lst){
 
 template<typename T>
 T first(node<T> lst){
-	return first(lst);
+	return lst->data;
 }
 
 template<typename T>

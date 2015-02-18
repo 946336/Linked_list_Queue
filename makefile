@@ -13,5 +13,5 @@ queue.o: queue.h
 test: mainTest.cpp dLinkedList.cpp queue.cpp
 	$(CXX) $(CPPFLAGS) $^ -o $@
 
-test2: mainTest.cpp
-	$(CXX) $(CPPFLAGS) $(ARGHFLAGS) $^ -o $@
+test2: mainTest.cpp dLinkedList.cpp queue.cpp
+	$(CXX) $(ARGHFLAGS) $(CPPFLAGS) $^ -o $@

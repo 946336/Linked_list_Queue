@@ -73,16 +73,12 @@ void Queue<T>::enqueue(T newData){
 
 template<typename T>
 T Queue<T>::dequeue(){
-	cout << "Oi" << endl;
 	node<T> toDelete = head;
-	cout << "MM" << endl;
 	T data = first(toDelete);
-	cout << "WW" << endl;
 	toDelete->prev->next = next(toDelete);
 	toDelete->next->prev = prev(toDelete);
 	if(queueSize >= 1) head = next(toDelete);
 	else head = ListNode<T>::empty;
-	cout << "Yo" << endl;
 	delete toDelete;
 	queueSize--;
 	return data;
