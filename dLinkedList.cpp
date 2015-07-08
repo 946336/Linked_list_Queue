@@ -1,9 +1,9 @@
 #ifndef DLINKEDLIST_CPP
 #define DLINKEDLIST_CPP
 
-#include <iostream>
 using namespace std;
 #include "dLinkedList.h"
+#include <cstdlib>
 
 template<typename T>
 struct ListNode{
@@ -52,6 +52,9 @@ void postpend (T newData, node<T> lst){
 
 template<typename T>
 node<T> deleteFirst(node<T> lst){
+	if(lst->next == ListNode<T>::empty){
+		return ListNode<T>::empty;
+	}
 	node<T> tempNode = lst;
 	lst = next(lst);
 	delete tempNode;
@@ -87,6 +90,25 @@ node<T> next(node<T> lst){
 template<typename T>
 node<T> prev(node<T> lst){
 	return lst->prev;
+}
+
+template<typename T>
+node<T> copyNode(node<T> lst){
+	ListNode<T> *newNode = new ListNode<T>;
+	newNode->data = lst->data;
+	newNode->prev = lst->prev;
+	newNode->next = lst->next;
+	return newNode;
+}
+
+template<typename T>
+void setNext(node<T> lst, node<T> to){
+	lst->next = to;
+}
+
+template<typename T>
+void setPrev(node<T> lst, node<T> from){
+	lst->prev = from;
 }
 
 #endif

@@ -1,7 +1,6 @@
 #ifndef QUEUE_CPP
 #define QUEUE_CPP
 
-#include <iostream>
 using namespace std;
 #include "queue.h"
 #include "dLinkedList.h"
@@ -31,17 +30,54 @@ Queue<T>::Queue(){
 	head = ListNode<T>::empty;
 }
 
+// TEST!!!!!!!!!!!!!!!!!
+template<typename T>
+Queue<T>::Queue(const Queue<T> &source){
+	queueSize = 0;
+	node<T> temp = source.head;
+	node<T> hold = temp;
+	do{
+		enqueue(first(temp));
+		temp = next(temp);
+	} while(hold != temp);
+}
+
+// TEST!!!!!!!!!!!!!!!!!
+template<typename T>
+Queue<T>& Queue<T>::operator= (const Queue<T> &source){
+	if(this != &source){
+		break_circular();
+		while(head != ListNode<T>::empty){
+			head = deleteFirst(head);
+		}
+
+		queueSize = 0;
+		node<T> temp = source.head;
+		node<T> hold = temp;
+		do{
+			enqueue(first(temp));
+			temp = next(temp);
+		} while(hold != temp);
+	}
+	return *this;
+}
+
 template <typename T>
 Queue<T>::~Queue(){
-	break_circular();
-	while(head->next != ListNode<T>::empty){
-		head = deleteFirst(head);
+	if(queueSize > 0){
+		break_circular();
+		while(head->next != ListNode<T>::empty){
+			head = deleteFirst(head);
+		}
 	}
 }
 
 // private; only used by destructor
 template<typename T>
 void Queue<T>::break_circular(){
+	if(queueSize == 0 or head == ListNode<T>::empty){
+		return;
+	}
 	node<T> temp_node = head;
 	while(next(temp_node) != head){
 		temp_node = next(temp_node);
@@ -94,6 +130,5 @@ template<typename T>
 int Queue<T>::size(){
 	return queueSize;
 }
-
 
 #endif

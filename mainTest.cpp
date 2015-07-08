@@ -5,8 +5,9 @@ using namespace std;
 /*
 apparently needed for my local copy of clang++ to work properly.
 funny, b/c sometimes it straight up can't find iostream. :\
+
+void *__gxx_personality_v0;
 */
-// void *__gxx_personality_v0;
 
 int main(){
 	Queue<double> was;

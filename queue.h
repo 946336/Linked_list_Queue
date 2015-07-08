@@ -2,14 +2,17 @@
 #define CIRCULAR_QUEUE_H
 
 #include "dLinkedList.h"
-#include <iostream>
 using namespace std;
 
 template <typename T>
 class Queue{
 public:
 	Queue();
+	Queue(const Queue<T> &source);
+
 	~Queue();
+
+	Queue<T>& operator= (const Queue<T> &source);
 
 	T front();
 	T back();
